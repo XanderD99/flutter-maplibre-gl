@@ -1189,7 +1189,7 @@ class MaplibreMapController {
   /// Adds an image layer to the map's style at render time.
   Future<void> addImageLayer(String layerId, String imageSourceId,
       {double? minzoom, double? maxzoom}) {
-    return _maplibreGlPlatform.addLayer(
+    return _maplibreGlPlatform.addImageLayer(
         layerId, imageSourceId, minzoom, maxzoom);
   }
 

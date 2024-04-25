@@ -351,4 +351,11 @@ class MethodChannelMaplibre extends MapLibreGlPlatform {
     // TODO: implement updateMyLocationTrackingMode
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> addImageLayer(String imageLayerId, String imageSourceId,
+      double? minzoom, double? maxzoom) {
+    // TODO: implement addImageLayer
+    throw UnimplementedError();
+  }
 }

@@ -89,13 +89,13 @@ abstract class MapLibreGlPlatform extends PlatformInterface {
   Future<void> updateImageSource(
       String imageSourceId, Uint8List? bytes, LatLngQuad? coordinates);
 
-  Future<void> addLayer(String imageLayerId, String imageSourceId,
+  Future<void> addImageLayer(String imageLayerId, String imageSourceId,
       double? minzoom, double? maxzoom);
 
   Future<void> addLayerBelow(String imageLayerId, String imageSourceId,
       String belowLayerId, double? minzoom, double? maxzoom);
 
-  Future<void> removeLayer(String imageLayerId);
+  Future<void> removeLayer(String layerId);
 
   Future<List> getLayerIds();
 

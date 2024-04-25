@@ -1131,7 +1131,7 @@ class MapLibreGlPlugin extends MapLibreGlPlatform
   }
 
   @override
-  Future<void> addLayer(String imageLayerId, String imageSourceId,
+  Future<void> addImageLayer(String imageLayerId, String imageSourceId,
       double? minzoom, double? maxzoom) {
     // TODO: implement addLayer
     throw UnimplementedError();

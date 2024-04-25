@@ -408,7 +408,7 @@ class MapLibreAndroid extends MapLibreGlPlatform {
   }
 
   @override
-  Future<void> addLayer(String imageLayerId, String imageSourceId,
+  Future<void> addImageLayer(String imageLayerId, String imageSourceId,
       double? minzoom, double? maxzoom) async {
     try {
       return await _channel.invokeMethod('style#addLayer', <String, dynamic>{
