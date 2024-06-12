@@ -6,36 +6,8 @@
 
 part of '../maplibre_gl_platform_interface.dart';
 
-class Line implements Annotation {
-  Line(this._id, this.options, [this._data]);
-
-  /// A unique identifier for this line.
-  ///
-  /// The identifier is an arbitrary unique string.
-  final String _id;
-
-  @override
-  String get id => _id;
-
-  final Map? _data;
-
-  Map? get data => _data;
-
-  /// The line configuration options most recently applied programmatically
-  /// via the map controller.
-  ///
-  /// The returned value does not reflect any changes made to the line through
-  /// touch events. Add listeners to the owning map controller to track those.
-  LineOptions options;
-
-  @override
-  Map<String, dynamic> toGeoJson() {
-    final geojson = options.toGeoJson();
-    geojson["id"] = id;
-    geojson["properties"]["id"] = id;
-
-    return geojson;
-  }
+class Line extends Annotation<LineOptions> {
+  Line(super.id, super.options, [super.data]);
 
   @override
   void translate(LatLng delta) {
@@ -48,7 +20,7 @@ class Line implements Annotation {
 ///
 /// When used to change configuration, null values will be interpreted as
 /// "do not change this configuration option".
-class LineOptions {
+class LineOptions implements AnnotationOptions {
   /// Creates a set of line configuration options.
   ///
   /// By default, every non-specified field is null, meaning no desire to change
@@ -119,6 +91,7 @@ class LineOptions {
     return json;
   }
 
+  @override
   Map<String, dynamic> toGeoJson() {
     return {
       "type": "Feature",

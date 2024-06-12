@@ -6,35 +6,8 @@
 
 part of '../maplibre_gl_platform_interface.dart';
 
-class Symbol implements Annotation {
-  Symbol(this._id, this.options, [this._data]);
-
-  /// A unique identifier for this symbol.
-  ///
-  /// The identifier is an arbitrary unique string.
-  final String _id;
-
-  @override
-  String get id => _id;
-
-  final Map? _data;
-  Map? get data => _data;
-
-  /// The symbol configuration options most recently applied programmatically
-  /// via the map controller.
-  ///
-  /// The returned value does not reflect any changes made to the symbol through
-  /// touch events. Add listeners to the owning map controller to track those.
-  SymbolOptions options;
-
-  @override
-  Map<String, dynamic> toGeoJson() {
-    final geojson = options.toGeoJson();
-    geojson["id"] = id;
-    geojson["properties"]["id"] = id;
-
-    return geojson;
-  }
+class Symbol extends Annotation<SymbolOptions> {
+  Symbol(super.id, super.options, [super.data]);
 
   @override
   void translate(LatLng delta) {
@@ -54,7 +27,7 @@ dynamic _offsetToJson(Offset? offset) {
 ///
 /// When used to change configuration, null values will be interpreted as
 /// "do not change this configuration option".
-class SymbolOptions {
+class SymbolOptions implements AnnotationOptions {
   /// Creates a set of symbol configuration options.
   ///
   /// By default, every non-specified field is null, meaning no desire to change
@@ -198,6 +171,7 @@ class SymbolOptions {
     return json;
   }
 
+  @override
   Map<String, dynamic> toGeoJson() {
     return {
       "type": "Feature",
